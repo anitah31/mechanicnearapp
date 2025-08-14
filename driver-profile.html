@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Profile - MechConnect</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="driver-profile-page">
+    <div class="page-background"></div>
+
+    <nav class="dashboard-nav">
+        <div class="nav-brand">
+            <span>MechConnect</span>
+        </div>
+        <div class="nav-menu">
+            <a href="driver-dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="driver-profile.html" class="nav-link active">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+            <a href="request-service.html" class="nav-link">
+                <i class="fas fa-plus"></i>
+                Request Service
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName"></span>
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="profile-container">
+            <div class="profile-header">
+                   
+                <div class="profile-info">
+                    <h1 id="profileName">Driver Name</h1>
+                    <p id="profileEmail">driver@example.com</p>
+                    <span class="profile-role">Driver</span>
+                </div>
+                <button id="editProfileBtn" class="btn btn-primary">
+                    <i class="fas fa-edit"></i>
+                    Edit Profile
+                </button>
+            </div>
+
+            <div class="profile-grid">
+                <!-- Personal Information -->
+                <div class="profile-card">
+                    <h3>Personal Information</h3>
+                    <form id="personalInfoForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Update Info</button>
+                    </form>
+                </div>
+
+                <!-- Vehicle Information -->
+                <div class="profile-card">
+                    <h3>Vehicle Information</h3>
+                    <form id="vehicleInfoForm">
+                        <div class="form-group">
+                            <label for="vehicleMake">Make</label>
+                            <input type="text" id="vehicleMake" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicleModel">Model</label>
+                            <input type="text" id="vehicleModel" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicleYear">Year</label>
+                            <input type="number" id="vehicleYear" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="licensePlate">License Plate</label>
+                            <input type="text" id="licensePlate" required>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Update Vehicle</button>
+                    </form>
+                </div>
+
+                <!-- Service History -->
+                <div class="profile-card full-width">
+                    <h3>Service History</h3>
+                    <div id="serviceHistory" class="service-history">
+                        <div class="loading">Loading service history...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module"src="js/auth-check.js"></script>
+    <script type="module"src="js/driver-profile.js"></script>
+</body>
+</html>
