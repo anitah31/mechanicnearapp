@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+          visibility: visible;
+        }
+      </style>
+      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Service - MECHANIC-NEAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body class="request-service-page">
+    <div class="page-background"></div>
+
+    <nav class="dashboard-nav">
+        <div class="nav-brand">
+            
+            <span>MECHANIC-NEAR</span>
+        </div>
+        <div class="nav-menu">
+            <a href="driver-dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="driver-profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+            <a href="request-service.html" class="nav-link active">
+                <i class="fas fa-plus"></i>
+                Request Service
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h1>Request Service</h1>
+                <p>Describe your issue and find nearby mechanics</p>
+            </div>
+        </div>
+
+        <div class="request-form-container">
+            <div class="form-and-map">
+                <!-- Service Request Form -->
+                <div class="form-section">
+                    <form id="serviceRequestForm" class="service-request-form">
+                        <div class="form-group">
+                            <h3>Vehicle Information</h3>
+                            <div class="form-row">
+                                <input type="text" id="vehicleMake" placeholder="Make (e.g., Toyota)" required>
+                                <input type="text" id="vehicleModel" placeholder="Model (e.g., Camry)" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="number" id="vehicleYear" placeholder="Year" min="1900" max="2024" required>
+                                <input type="text" id="licensePlate" placeholder="License Plate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Issue Description</h3>
+                            <select id="issueCategory" required>
+                                <option value="">Select Issue Category</option>
+                                <option value="engine">Engine Problems</option>
+                                <option value="transmission">Transmission Issues</option>
+                                <option value="brakes">Brake Problems</option>
+                                <option value="electrical">Electrical Issues</option>
+                                <option value="tires">Tire Problems</option>
+                                <option value="battery">Battery Issues</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <textarea id="issueDescription" placeholder="Describe the issue in detail..." rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Urgency Level</h3>
+                            <div class="urgency-options">
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="low" required>
+                                    <span class="urgency-indicator low"></span>
+                                    <div>
+                                        <strong>Low</strong>
+                                        <p>Can wait a few hours</p>
+                                    </div>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="medium" required>
+                                    <span class="urgency-indicator medium"></span>
+                                    <div>
+                                        <strong>Medium</strong>
+                                        <p>Need help within 1 hour</p>
+                                    </div>
+                                </label>
+                                <label class="urgency-option">
+                                    <input type="radio" name="urgency" value="high" required>
+                                    <span class="urgency-indicator high"></span>
+                                    <div>
+                                        <strong>High</strong>
+                                        <p>Emergency - immediate help</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h3>Location</h3>
+                            <div class="location-actions">
+                                <button type="button" id="getCurrentLocation" class="btn btn-secondary">
+                                    <i class="fas fa-location-arrow"></i>
+                                    Use Current Location
+                                </button>
+                                <button type="button" id="selectOnMap" class="btn btn-outline">
+                                    <i class="fas fa-map"></i>
+                                    Select on Map
+                                </button>
+                            </div>
+                            <div id="locationDisplay" class="location-display">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Click to get your location</span>
+                            </div>
+                            <input type="text" id="manualAddress" placeholder="Or enter address manually...">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-search"></i>
+                            Find Mechanics
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Interactive Map -->
+                <div class="map-section">
+                    <div id="locationMap" class="location-map"></div>
+                </div>
+            </div>
+
+            <!-- Available Mechanics -->
+            <div id="availableMechanics" class="available-mechanics" style="display: none;">
+                <h3>Available Mechanics Near You</h3>
+                <div id="mechanicsMap" class="mechanics-map"></div>
+                <div id="mechanicsList" class="mechanics-list">
+                    <!-- Mechanics will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="js/auth-check.js"></script>
+    <script src="js/geolocation.js"></script>
+    <script type="module" src="js/request-service.js"></script>
+</body>
+</html>
