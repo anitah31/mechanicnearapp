@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Dashboard - MECHANIC-NEAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    
+</head>
+<body class="driver-dashboard-page">
+    <div class="page-background"></div>
+
+    <nav class="dashboard-nav">
+        <div class="nav-brand">
+            <span>MECHANIC-NEAR</span>
+        </div>
+        <div class="nav-menu">
+            <a href="driver-dashboard.html" class="nav-link active">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="driver-profile.html" class="nav-link">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+            <a href="request-service.html" class="nav-link">
+                <i class="fas fa-plus"></i>
+                Request Service
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName"></span>
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h1>YOU ARE BACK! <span id="driverName"></span>!</h1>
+                <p>Find nearby mechanics or track your service requests</p>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Quick Actions -->
+            <div class="dashboard-card">
+                <h2>Quick Actions</h2>
+                <div class="quick-actions">
+                    <button class="action-btn primary" onclick="location.href='request-service.html'">
+                        <i class="fas fa-search"></i>
+                        Request Service
+                    </button>
+                    <button class="action-btn secondary" id="updateLocationBtn">
+                        <i class="fas fa-location-arrow"></i>
+                        Update Location
+                    </button>
+                </div>
+                
+                <div class="location-info">
+                    <h3>Current Location</h3>
+                    <div id="locationDisplay">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="locationText">Getting location...</span>
+                    </div>
+                    <div id="miniMap" style="height: 200px;"></div>
+                    <div id="mechanicsMap" style="height: 400px;"></div>
+                    
+                </div>
+            </div>
+
+            <!-- Active Requests -->
+            <div class="dashboard-card">
+                <h2>Active Requests</h2>
+                <div id="activeRequests" class="requests-list">
+                    <div class="loading">Loading requests...</div>
+                </div>
+            </div>
+
+            <!-- Nearby Mechanics Map -->
+            <div class="dashboard-card full-width">
+                <h2>Nearby Mechanics</h2>
+                <div id="mechanicsMap" class="dashboard-map"></div>
+                <div id="nearbyMechanics" class="mechanics-grid">
+                    <div class="loading">Loading mechanics...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="module" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="js/auth-check.js"></script>
+    <script type="module" src="js/geolocation.js"></script>
+    <script type="module" src="js/driver-dashboard.js"></script>
+</body>
+</html>
