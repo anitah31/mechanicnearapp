@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Details - MECHANIC-NEAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body class="mechanic-detail-page">
+    <div class="page-background"></div>
+
+    <nav class="dashboard-nav">
+        <div class="nav-brand">
+           
+            <span>MECHANIC-NEAR</span>
+        </div>
+        <div class="nav-menu">
+            <button onclick="history.back()" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i>
+                Back
+            </button>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="mechanic-detail-container">
+            <!-- Mechanic Header -->
+            <div class="mechanic-header">
+    
+                <div class="mechanic-info">
+                    <h1 id="mechanicName">Loading...</h1>
+                    </div>
+                    <div class="mechanic-distance">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="distance">2.3 miles away</span>
+                    </div>
+                    <div class="availability-status">
+                        <span id="availabilityStatus" class="status available">Available</span>
+                    </div>
+                </div>
+                    <button id="requestService" class="btn btn-secondary">
+                        <i class="fas fa-wrench"></i>
+                        Request Service
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mechanic Details Grid -->
+                <!-- Specialties -->
+                <div class="detail-card">
+                    <h3>Specialties</h3>
+                    <div id="specialties" class="specialties-list">
+                        <span class="specialty-tag">Engine Repair</span>
+                        <span class="specialty-tag">Transmission</span>
+                        <span class="specialty-tag">Diagnostics</span>
+                    </div>
+                </div>
+
+                <!-- Location Map -->
+                <div class="detail-card full-width">
+                    <h3>Location</h3>
+                    <div id="mechanicLocationMap" class="detail-map"></div>
+                    <div class="address-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="address">Loading address...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module"src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="js/auth-check.js"></script>
+    <script type="module"src="js/geolocation.js"></script>
+    <script type="module" type="module"src="js/mechanic-detail.js"></script>
+</body>
+</html>
