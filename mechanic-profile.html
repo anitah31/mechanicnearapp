@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Profile - MECHANIC-NEAR</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="mechanic-profile-page">
+    <div class="page-background"></div>
+
+    <nav class="dashboard-nav">
+        <div class="nav-brand">
+            
+            <span>MECHANIC-NEAR</span>
+        </div>
+        <div class="nav-menu">
+            <a href="mechanic-dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </a>
+            <a href="mechanic-profile.html" class="nav-link active">
+                <i class="fas fa-user"></i>
+                Profile
+            </a>
+        </div>
+        <div class="nav-user">
+            <span id="userName">Loading...</span>
+            <button id="logoutBtn" class="btn btn-outline">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-info">
+                    <h1 id="profileName">Mechanic Name</h1>
+                    <p id="profileEmail">mechanic@example.com</p>
+                    <span class="profile-role">Mechanic</span>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+                <!-- Personal Information -->
+                <div class="profile-card">
+                    <h3>Personal Information</h3>
+                    <form id="personalInfoForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" rows="3" placeholder="Tell drivers about your experience..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Update Personal Info</button>
+                    </form>
+                </div>
+
+                <!-- Professional Information -->
+                <div class="profile-card">
+                    <h3>Professional Information</h3>
+                    <form id="professionalInfoForm">
+                        <div class="form-group">
+                            <label for="experience">Years of Experience</label>
+                            <input type="number" id="experience" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="specialties">Specialties</label>
+                            <div class="specialty-checkboxes">
+                                <label><input type="checkbox" value="Engine Repair"> Engine Repair</label>
+                                <label><input type="checkbox" value="Transmission"> Transmission</label>
+                                <label><input type="checkbox" value="Brakes"> Brakes</label>
+                                <label><input type="checkbox" value="Electrical"> Electrical</label>
+                                <label><input type="checkbox" value="Diagnostics"> Diagnostics</label>
+                                <label><input type="checkbox" value="Tire Service"> Tire Service</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceRadius">Service Radius (miles)</label>
+                            <input type="number" id="serviceRadius" min="1" max="50" value="10" required>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Update Professional Info</button>
+                    </form>
+                </div>
+
+                <!-- Service Statistics -->
+                <div class="profile-card">
+                    <h3>Service Statistics</h3>
+                    <div class="stats-display">
+                        <div class="stat-item">
+                            <span class="stat-value" id="totalJobs">0</span>
+                            <span class="stat-label">Total Jobs</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value" id="completedJobs">0</span>
+                            <span class="stat-label">Completed Jobs</span>
+                        </div>
+        
+                    </div>
+                </div>
+
+                <!-- Service History -->
+                <div class="profile-card full-width">
+                    <h3>Service History</h3>
+                    <div id="serviceHistory" class="service-history">
+                        <div class="loading">Loading service history...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module"src="js/auth-check.js"></script>
+    <script type="module"src="js/mechanic-profile.js"></script>
+</body>
+</html>
