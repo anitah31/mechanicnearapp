@@ -5,27 +5,23 @@ let currentUser = null;
 let dashboardMap = null;
 let miniMap = null;
 
-let userLocationMarkerMini = null;        // User location marker for miniMap
-let userLocationMarkerDashboard = null;   // User location marker for dashboardMap
+let userLocationMarkerMini = null;        
+let userLocationMarkerDashboard = null;   
 let mechanicMarkers = [];
 
-/**
- * Initializes the dashboard - sets up maps, gets user location, loads data
- */
+
 async function initializeDashboard() {
   try {
-    initializeMaps();           // Initialize maps first - miniMap and dashboardMap
-    await updateLocation();     // Get user location and update markers on map
-    await loadActiveRequests(); // Load current active service requests
-    await loadNearbyMechanics(); // Load nearby mechanics and show them on map/list
+    initializeMaps();           
+    await updateLocation();     
+    await loadActiveRequests(); 
+    await loadNearbyMechanics(); 
   } catch (error) {
     console.error("Dashboard initialization error:", error);
   }
 }
 
-/**
- * Gets user location via geoService and updates UI and maps
- */
+
 async function updateLocation() {
   try {
     const options = {
@@ -42,10 +38,7 @@ async function updateLocation() {
   }
 }
 
-/**
- * Updates the text display showing user latitude and longitude
- * @param {Object} location - {latitude, longitude}
- */
+
 function updateLocationDisplay(location) {
   const locationText = document.getElementById("locationText");
   if (locationText) {
@@ -53,9 +46,7 @@ function updateLocationDisplay(location) {
   }
 }
 
-/**
- * Initialize Leaflet maps - miniMap and dashboardMap
- */
+
 function initializeMaps() {
   miniMap = window.geoService.initializeMap("miniMap", {
     zoom: 15,
@@ -86,10 +77,7 @@ function updateMapLocation(location) {
   }
 }
 
-/**
- * Loads active service requests for the current driver user
- */
-// In driver-dashboard.js, modify the loadActiveRequests function:
+
 async function loadActiveRequests() {
   const container = document.getElementById("activeRequests");
   if (!container || !currentUser) return;
@@ -183,9 +171,7 @@ function setupRequestTracking(requestId) {
       }
   });
 }
-/**
- * Loads nearby mechanics within 10 miles and updates the list and map markers
- */
+
 async function loadNearbyMechanics() {
   const container = document.getElementById("nearbyMechanics");
   if (!container || !window.geoService.currentLocation) return;
@@ -223,20 +209,13 @@ async function loadNearbyMechanics() {
   }
 }
 
-/**
- * Renders mechanic cards HTML and inserts into the nearbyMechanics container
- * @param {Array} mechanics - list of mechanic data
- */
+
 function displayMechanicsList(mechanics) {
   const container = document.getElementById("nearbyMechanics");
   container.innerHTML = mechanics.map(createMechanicCard).join("");
 }
 
-/**
- * Creates an HTML string for a mechanic card
- * @param {Object} mechanic
- * @returns {string} HTML for mechanic card
- */
+
 function createMechanicCard(mechanic) {
   const stars = "★".repeat(Math.floor(mechanic.rating || 0));
   const specialties = (mechanic.specialties || [])
@@ -267,10 +246,7 @@ function createMechanicCard(mechanic) {
   `;
 }
 
-/**
- * Updates the mechanics markers on the dashboard map
- * @param {Array} mechanics - list of mechanic data
- */
+
 function updateMechanicsMap(mechanics) {
   if (!dashboardMap) return;
 
@@ -289,7 +265,7 @@ function updateMechanicsMap(mechanics) {
   }
 }
 
-// Button listener for location update
+
 document.getElementById("updateLocationBtn")?.addEventListener("click", updateLocation);
 
 // Initialize when DOM loads
