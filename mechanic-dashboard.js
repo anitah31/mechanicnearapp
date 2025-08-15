@@ -1,7 +1,7 @@
 // Import Firebase
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-import { authManager } from "./auth.js"; // 🔹 Now using authManager directly
+import { authManager } from "./auth.js"; //  Now using authManager directly
 
 const auth = getAuth();
 const db = getFirestore();
@@ -17,7 +17,7 @@ function redirectTo(url) {
   console.log('[Redirect] Navigating to:', url);
   window.location.href = url;
 }
-// 1. Ensure proper map initialization
+// map initialization
 function initializeMap() {
     const mapContainer = document.getElementById('requestsMap');
     
@@ -26,7 +26,7 @@ function initializeMap() {
       return;
     }
   
-    // Check if Leaflet is loaded
+    // Leaflet is loaded
     if (!window.L || !window.L.map) {
       console.error('Leaflet map library not loaded!');
       return;
@@ -34,7 +34,7 @@ function initializeMap() {
   
     try {
       requestsMap = L.map('requestsMap', {
-        center: [51.505, -0.09], // Default center if no location
+        center: [51.505, -0.09], // Default center
         zoom: 12
       });
   
@@ -52,7 +52,7 @@ function initializeMap() {
     }
   }
   
-  // 2. Improved location handling
+  // location handling
   async function updateLocation() {
     try {
       if (!navigator.geolocation) {
