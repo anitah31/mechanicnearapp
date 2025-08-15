@@ -1,4 +1,4 @@
-// auth-check.js (Modified - Redirects Removed)
+
 import {
   getAuth,
   onAuthStateChanged,
@@ -87,7 +87,7 @@ async function loadUserData(uid) {
   }
 }
 
-// Modified handleRoleRouting to prevent automatic redirects
+// prevent automatic redirects
 function handleRoleRouting(role) {
   // Completely empty function to prevent any routing
   console.log(`Role detected: ${role}. Routing disabled per requested behavior`);
