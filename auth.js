@@ -1,18 +1,16 @@
-// File: /project 2/js/auth.js
 
-// Authentication functionality using Firebase Auth and Firestore
 import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
-// 🚨 FIX: Correct import for Auth functions
+
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
   onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js"; // <--- THIS IS THE CRITICAL CHANGE
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js"; 
 
-// Correct import for Firestore functions
+
 import {
   getFirestore,
   doc,
@@ -21,7 +19,7 @@ import {
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyB3M2YkW2uPL2f6y6B_IA0yotniG7ySBqM",
   authDomain: "mech-4192d.firebaseapp.com",
@@ -32,7 +30,7 @@ const firebaseConfig = {
   measurementId: "G-Z84RVWH2N6"
 };
 
-// Initialize Firebase app only if it hasn't been initialized already
+
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -41,7 +39,7 @@ class AuthManager {
     this.currentUser = null;
   }
 
-  // Load user profile and determine role
+  
   async loadUserData() {
     
       const user = auth.currentUser;
@@ -50,7 +48,7 @@ class AuthManager {
         return null;
       }
     
-      // Try drivers collection
+      
       let docRef = doc(db, "drivers", user.uid);
       let docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
@@ -58,7 +56,7 @@ class AuthManager {
         return this.currentUser;
       }
     
-      // Try mechanics collection
+      
       docRef = doc(db, "mechanics", user.uid);
       docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
