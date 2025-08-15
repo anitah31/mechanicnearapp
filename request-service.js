@@ -324,42 +324,6 @@ function displayMechanicsList(mechanics) {
 }
 
 
-function createMechanicCard(mechanic) {
-  const stars = '★'.repeat(Math.floor(mechanic.rating || 0));
-  const specialties = (mechanic.specialties || []).slice(0, 3)
-    .map(s => `<span class="specialty-tag">${s}</span>`)
-    .join('');
-
-
-  return `
-    <div class="mechanic-card">
-      <div class="mechanic-header">
-        <div class="mechanic-info">
-          <h4>${mechanic.name}</h4>
-          <div class="mechanic-rating">
-            <span class="stars">${stars}</span>
-            <span>${(mechanic.rating || 0).toFixed(1)}</span>
-            <span class="distance">${mechanic.distance.toFixed(1)} miles away</span>
-          </div>
-          <div class="specialties">${specialties}</div>
-          <p class="experience">${mechanic.experience || 0}+ years experience</p>
-        </div>
-        <div class="mechanic-actions">
-          <button class="btn btn-primary" onclick="selectMechanic('${mechanic.id}')">
-            <i class="fas fa-check"></i> Select Mechanic
-          </button>
-          <a href="mechanic-detail.html?id=${mechanic.id}" class="btn btn-outline">
-            <i class="fas fa-eye"></i> View Details
-          </a>
-          <a href="tel:${mechanic.phone}" class="btn btn-secondary">
-            <i class="fas fa-phone"></i> Call Now
-          </a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
 
 window.selectMechanic = function(mechanicId) {
   alert('Request sent to mechanic! You will be notified when they respond.');
