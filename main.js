@@ -1,4 +1,4 @@
-// main.js
+
 import { authManager } from "./auth.js";
 
 document.addEventListener("DOMContentLoaded", () => {
