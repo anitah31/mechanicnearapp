@@ -234,7 +234,7 @@ async function handleServiceRequest(e) {
       const docRef = await addDoc(collection(db, "serviceRequests"), serviceRequest);
       
       // Redirect to mechanic selection
-      window.location.href = `mechanic-detail.html?requestId=${docRef.id}`;
+      window.location.href = `driver-dashboard.html?requestId=${docRef.id}`;
       
     } catch (error) {
       console.error('Error creating service request:', error);
