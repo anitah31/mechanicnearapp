@@ -204,7 +204,6 @@ async function handleAddressInput(e) {
   }
 }
 
-// In request-service.js, modify the handleServiceRequest function:
 async function handleServiceRequest(e) {
     e.preventDefault();
     
@@ -233,7 +232,7 @@ async function handleServiceRequest(e) {
   
       const docRef = await addDoc(collection(db, "serviceRequests"), serviceRequest);
       
-      // Redirect to mechanic selection
+      // Redirect to mechanic 
       window.location.href = `driver-dashboard.html?requestId=${docRef.id}`;
       
     } catch (error) {
